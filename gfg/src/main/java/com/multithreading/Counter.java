@@ -6,16 +6,16 @@ public class Counter {
     // public  void increment(){
     //     count++;
     // }
-    // public synchronized void increment(){
-    //     count++;
-    // }
+    public synchronized void increment(){
+        count++;
+    }
 
     //synchronized block
-    public void increment(){
-        synchronized(this){
-            count++;
-        }
-    }
+    // public void increment(){
+    //     synchronized(this){
+    //         count++;
+    //     }
+    // }
 
     public  void decrement(){
         count--;

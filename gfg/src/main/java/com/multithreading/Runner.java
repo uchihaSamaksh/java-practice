@@ -83,73 +83,73 @@ public class Runner {
          // }
          // System.out.println(counter.getCount());
 
-         // LocksDemo locksDemo = new LocksDemo();
-         // Runnable r1 = () -> {
-         //    locksDemo.withdraw(500);
-         // };
+         LocksDemo locksDemo = new LocksDemo();
+         Runnable r1 = () -> {
+            locksDemo.withdraw(500);
+         };
           
-         // Thread t1 = new Thread(r1, "t1");
-         // Thread t2 = new Thread(r1, "t2");
-         // t1.start();
-         // t2.start();
-         // try {
-         //    t1.join();
-         //    t2.join();
-         // } catch (InterruptedException e) {
-         //    // TODO Auto-generated catch block
-         //    e.printStackTrace();
-         // }
-         // System.out.println(locksDemo.getBalance());
-
-
-         // Read write lock
-         ReadWriteLock readWriteLock = new ReadWriteLock();
-         Runnable readLock = new Runnable() {
-            @Override
-            public void run(){
-               for(int i = 0; i < 10; i++){
-                  try {
-                     Thread.sleep(1000);
-                  } catch (InterruptedException e) {
-                     // TODO Auto-generated catch block
-                     e.printStackTrace();
-                  }
-                  System.out.println(Thread.currentThread().getName() + " is reading the count: " + readWriteLock.getCount());
-            }
-         }
-         };
-
-         Runnable writeLock = new Runnable() {
-            @Override
-            public void run(){
-               readWriteLock.incrementCount();
-               try {
-                  Thread.sleep(5000);
-               } catch (InterruptedException e) {
-                  // TODO Auto-generated catch block
-                  e.printStackTrace();
-               }
-            }
-         };
-
-         Thread readThread1 = new Thread(readLock, "readThread");
-         Thread writeThread2 = new Thread(writeLock, "writeThread");
-         Thread readThread3 = new Thread(readLock, "readThread2");
-         Thread writeThread4 = new Thread(writeLock, "writeThread2");
-         
-         readThread1.start();
-         writeThread2.start();
-         readThread3.start();
-         writeThread4.start();
-
+         Thread t1 = new Thread(r1, "t1");
+         Thread t2 = new Thread(r1, "t2");
+         t1.start();
+         t2.start();
          try {
-            readThread1.join();
-            writeThread2.join();
-            readThread3.join();
-            writeThread4.join();
+            t1.join();
+            t2.join();
          } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
          }
+         System.out.println(locksDemo.getBalance());
+
+
+         // Read write lock
+         // ReadWriteLock readWriteLock = new ReadWriteLock();
+         // Runnable readLock = new Runnable() {
+         //    @Override
+         //    public void run(){
+         //       for(int i = 0; i < 10; i++){
+         //          try {
+         //             Thread.sleep(1000);
+         //          } catch (InterruptedException e) {
+         //             // TODO Auto-generated catch block
+         //             e.printStackTrace();
+         //          }
+         //          System.out.println(Thread.currentThread().getName() + " is reading the count: " + readWriteLock.getCount());
+         //    }
+         // }
+         // };
+
+         // Runnable writeLock = new Runnable() {
+         //    @Override
+         //    public void run(){
+         //       readWriteLock.incrementCount();
+         //       try {
+         //          Thread.sleep(5000);
+         //       } catch (InterruptedException e) {
+         //          // TODO Auto-generated catch block
+         //          e.printStackTrace();
+         //       }
+         //    }
+         // };
+
+         // Thread readThread1 = new Thread(readLock, "readThread");
+         // Thread writeThread2 = new Thread(writeLock, "writeThread");
+         // Thread readThread3 = new Thread(readLock, "readThread2");
+         // Thread writeThread4 = new Thread(writeLock, "writeThread2");
+         
+         // readThread1.start();
+         // writeThread2.start();
+         // readThread3.start();
+         // writeThread4.start();
+
+         // try {
+         //    readThread1.join();
+         //    writeThread2.join();
+         //    readThread3.join();
+         //    writeThread4.join();
+         // } catch (InterruptedException e) {
+         //    // TODO Auto-generated catch block
+         //    e.printStackTrace();
+         // }
     }
 }
